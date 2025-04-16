@@ -1,14 +1,14 @@
-Andrew Goodling
-CIS 655 01
-4/16/2025
-ReadMe File
-This application scrapes research articles from PubMed based on user-supplied keywords and emails daily summaries back to the users. It runs on Google Cloud using fully managed services.
+Andrew Goodling<br>
+CIS 655 01<br>
+4/16/2025<br>
+ReadMe File<br>
+This application scrapes research articles from PubMed based on user-supplied keywords and emails daily summaries back to the users. It runs on Google Cloud using fully managed services.<br><br>
 
 Project Goals:
 •	Allow users to subscribe with an email + topic
 •	Scrape PubMed for articles matching the topic
 •	Send queried emails every day at 11 AM
-•	Automatically trigger using Cloud Scheduler
+•	Automatically trigger using Cloud Scheduler<br><br>
 
 Technologies used:
 Tool/Service	Purpose
@@ -19,14 +19,14 @@ Cloud Build	Containerize the application
 Cloud Scheduler	Trigger daily tasks
 Docker	Package and ship Flask application
 Gmail SMTP	Send formatted emails
-BeautifulSoup/requests	Scrape PubMed for queries
+BeautifulSoup/requests	Scrape PubMed for queries<br><br>
 
 Prerequisites:
 1.	A Google Cloud Account
 2.	Python 3.11 +
 3.	Gmail account with App password enabled (need to have MFA enabled on gmail)
 4.	Google Cloud CLI installed
-5.	Understanding of Python, Flask, HTML
+5.	Understanding of Python, Flask, HTML<br><br>
 
 Step by Step:
 1.	Create a Google Cloud Project and enable the following API’s
