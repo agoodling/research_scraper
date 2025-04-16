@@ -4,21 +4,21 @@ CIS 655 01<br>
 ReadMe File<br>
 This application scrapes research articles from PubMed based on user-supplied keywords and emails daily summaries back to the users. It runs on Google Cloud using fully managed services.<br><br>
 
-Project Goals:
-•	Allow users to subscribe with an email + topic
-•	Scrape PubMed for articles matching the topic
-•	Send queried emails every day at 11 AM
+Project Goals:<br>
+•	Allow users to subscribe with an email + topic <br>
+•	Scrape PubMed for articles matching the topic<br>
+•	Send queried emails every day at 11 AM<br>
 •	Automatically trigger using Cloud Scheduler<br><br>
 
-Technologies used:
-Tool/Service	Purpose
-Flask	Backend web framework 
-FireStore	Store subscriptions and articles
-Cloud Run	Host the Flask application 
-Cloud Build	Containerize the application
-Cloud Scheduler	Trigger daily tasks
-Docker	Package and ship Flask application
-Gmail SMTP	Send formatted emails
+Technologies used:<br>
+Tool/Service	Purpose<br>
+Flask	Backend web framework <br>
+FireStore	Store subscriptions and articles<br>
+Cloud Run	Host the Flask application <br>
+Cloud Build	Containerize the application<br>
+Cloud Scheduler	Trigger daily tasks<br>
+Docker	Package and ship Flask application<br>
+Gmail SMTP	Send formatted emails<br>
 BeautifulSoup/requests	Scrape PubMed for queries<br><br>
 
 Prerequisites:
@@ -30,30 +30,30 @@ Prerequisites:
 
 Step by Step:
 1.	Create a Google Cloud Project and enable the following API’s
-a.	Cloud Build
-b.	Firestore
-c.	Cloud Scheduler
-2.	Set up the Firestore
-a.	To set up the Firestore search “Firestore” in the search bar 
-b.	Click create databasechose ‘native mode’ Select region to host
-3.	 Open the Cloud shell and make a directory for the project
-a.	Add in the Files that will be needed for deployment
-i.	Main.py
-ii.	Index.html 
-iii.	Requirements.txt
-iv.	Dockerfile
-v.	.env
-b.	Populate these files with the code needed to build the application.
-i.	These can be seen in the Github repo found here
+    a.	Cloud Build
+    b.	Firestore
+    c.	Cloud Scheduler
+2.	Set up the Firestore<br>
+    a.	To set up the Firestore search “Firestore” in the search bar <br>
+   b.	Click create databasechose ‘native mode’ Select region to host<br>
+3.	 Open the Cloud shell and make a directory for the project<br>
+    a.	Add in the Files that will be needed for deployment<br>
+        i.	Main.py<br>
+        ii.	Index.html <br>
+        iii.	Requirements.txt<br>
+        iv.	Dockerfile<br>
+        v.	.env<br>
+    b.	Populate these files with the code needed to build the application.<br>
+        i.	These can be seen in the Github repo found here
 4.	Build and Deploy the application to Cloud Run
-a.	gcloud builds submit --tag gcr.io/[PROJECT-ID]/[API Endpoint]
-gcloud run deploy research-scraper \
-  --image gcr.io/[PROJECT-ID]/[API Endpoint] \
-  --platform managed \
-  --region us-central1 \
-  --allow-unauthenticated
-5.	Set up Cloud Scheduler to hit the API endpoint at a specified time
-a.	I set mine for 11am everyday using (0 11 ***)
+    a.	gcloud builds submit --tag gcr.io/[PROJECT-ID]/[API Endpoint]
+        gcloud run deploy research-scraper \
+       --image gcr.io/[PROJECT-ID]/[API Endpoint] \
+       --platform managed \
+       --region us-central1 \
+       --allow-unauthenticated
+5.	Set up Cloud Scheduler to hit the API endpoint at a specified time <br>
+    a.	I set mine for 11am everyday using (0 11 ***)
 
 
 
