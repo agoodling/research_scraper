@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Scraper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+        }
+        input[type="email"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Subscribe to Research Updates</h2>
+        <form id="subscribeForm">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email" />
+            
+            <label for="query">Search Query:</label>
+            <input type="text" id="query" name="query" required placeholder="Enter a search term" />
+            
+            <button type="submit">Subscribe</button>
+        </form>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get the form data
+            const email = document.getElementById('email').value;
+            const query = document.getElementById('query').value;
+
+            // Prepare data for the POST request
+            const data = {
+                email: email,
+                query: query
+            };
+
+            // Send the data to the backend
+            fetch('https://research-scraper-204567604149.us-central1.run.app/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    // Show success message
+                    document.getElementById('message').innerHTML = `<span class="success">${data.message}</span>`;
+                } else if (data.error) {
+                    // Show error message
+                    document.getElementById('message').innerHTML = `<span class="error">${data.error}</span>`;
+                }
+            })
+            .catch(error => {
+                // Handle errors
+                document.getElementById('message').innerHTML = `<span class="error">Error: Unable to subscribe at the moment. Please try again later.</span>`;
+            });
+        });
+    </script>
+
+</body>
+</html>
+
